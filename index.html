@@ -1164,6 +1164,42 @@
     setTimeout(() => { chatTooltip.style.opacity = '1'; }, 3000);
     setTimeout(() => { chatTooltip.style.opacity = '0'; }, 8000);
 </script>
+<div class="chat-widget" id="messengerWidget" style="cursor: pointer;">
+    <div class="pulse"></div>
+    <div class="chat-tooltip">დაგვიკავშირდით Messenger-ში!</div>
+    <button class="chat-button" type="button">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/>
+        </svg>
+    </button>
+</div>
 
+<script>
+    // ჩატის გახსნის გარანტირებული ფუნქცია JavaScript-ით
+    document.getElementById('messengerWidget').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // მომხმარებლის მოწყობილობის შემოწმება
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            // მობილურებზე ვცდილობთ პირდაპირ აპლიკაციის პროტოკოლის გახსნას
+            window.location.href = "fb-messenger://user/moargeauto";
+            
+            // თუ აპლიკაცია არ არის ან დაიბლოკა, 0.5 წამში გადაიყვანს სტანდარტულ ბმულზე
+            setTimeout(function() {
+                window.open("https://m.me/moargeauto", "_blank");
+            }, 500);
+        } else {
+            // კომპიუტერზე პირდაპირ ახალ ტაბში ხსნის
+            window.open("https://m.me/moargeauto", "_blank");
+        }
+    });
+
+    // თულთიპის გამოჩენის ლოგიკა (უცვლელი)
+    const chatTooltip = document.querySelector('.chat-tooltip');
+    setTimeout(() => { chatTooltip.style.opacity = '1'; }, 3000);
+    setTimeout(() => { chatTooltip.style.opacity = '0'; }, 8000);
+</script>
 </body>
 </html>
