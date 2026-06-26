@@ -1160,11 +1160,7 @@
     });
 
     // ჩატის თულთიპის გამოჩენა
-    const chatTooltip = document.querySelector('.chat-tooltip');
-    setTimeout(() => { chatTooltip.style.opacity = '1'; }, 3000);
-    setTimeout(() => { chatTooltip.style.opacity = '0'; }, 8000);
-</script>
-<div class="chat-widget" id="messengerWidget" style="cursor: pointer;">
+   <div class="chat-widget" id="messengerWidget" style="cursor: pointer;">
     <div class="pulse"></div>
     <div class="chat-tooltip">დაგვიკავშირდით Messenger-ში!</div>
     <button class="chat-button" type="button">
@@ -1175,31 +1171,55 @@
 </div>
 
 <script>
-    // ჩატის გახსნის გარანტირებული ფუნქცია JavaScript-ით
     document.getElementById('messengerWidget').addEventListener('click', function(e) {
         e.preventDefault();
         
-        // მომხმარებლის მოწყობილობის შემოწმება
+        // თქვენი გვერდის სახელი და უნიკალური ალტერნატიული მისამართები
+        const pageName = "moargeauto";
+        const fallbackUrl = "https://www.facebook.com/messages/t/" + pageName;
+        const primaryUrl = "https://m.me/" + pageName;
+
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         
         if (isMobile) {
-            // მობილურებზე ვცდილობთ პირდაპირ აპლიკაციის პროტოკოლის გახსნას
-            window.location.href = "fb-messenger://user/moargeauto";
+            // ყველაზე მუშა Deep Link მობილურებისთვის (ცდის აპლიკაციის გახსნას)
+            window.location.href = "fb-messenger://share/?link=" + encodeURIComponent(primaryUrl);
             
-            // თუ აპლიკაცია არ არის ან დაიბლოკა, 0.5 წამში გადაიყვანს სტანდარტულ ბმულზე
+            // თუ ტელეფონმა ვერ გახსნა აპლიკაცია, 400 მილიწამში გადაიყვანს უსაფრთხო ვებ ვერსიაზე
             setTimeout(function() {
-                window.open("https://m.me/moargeauto", "_blank");
-            }, 500);
+                window.location.href = fallbackUrl;
+            }, 400);
         } else {
-            // კომპიუტერზე პირდაპირ ახალ ტაბში ხსნის
-            window.open("https://m.me/moargeauto", "_blank");
+            // კომპიუტერზე პირდაპირ ხსნის ჩატს ახალ ფანჯარაში
+            window.open(primaryUrl, "_blank");
         }
     });
 
-    // თულთიპის გამოჩენის ლოგიკა (უცვლელი)
+    // მობილური მენიუს ლოგიკა (მენიუ რომ არ გაფუჭდეს)
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    const links = document.querySelectorAll('.nav-links li a');
+
+    if(burgerBtn && navLinks) {
+        burgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burgerBtn.classList.toggle('toggle');
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burgerBtn.classList.remove('toggle');
+            });
+        });
+    }
+
+    // თულთიპის გამოჩენა
     const chatTooltip = document.querySelector('.chat-tooltip');
-    setTimeout(() => { chatTooltip.style.opacity = '1'; }, 3000);
-    setTimeout(() => { chatTooltip.style.opacity = '0'; }, 8000);
+    if(chatTooltip) {
+        setTimeout(() => { chatTooltip.style.opacity = '1'; }, 3000);
+        setTimeout(() => { chatTooltip.style.opacity = '0'; }, 8000);
+    }
 </script>
 </body>
 </html>
