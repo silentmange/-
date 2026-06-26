@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>მოარგე - EVA საავტომობილო ხალიჩები</title>
+    <title>მოარგე - პრემიუმ EVA ხალიჩები თქვენი ავტომობილისთვის</title>
+    
+    <!-- SEO & Facebook Meta Tags -->
+    <meta name="description" content="კომპანია მოარგე გთავაზობთ პრემიუმ ხარისხის, ეკოლოგიურად სუფთა EVA საავტომობილო ხალიჩებს 30-40 წუთში! 2 წლიანი ქარხნული გარანტია და მიწოდება მთელ საქართველოში.">
+    <meta name="keywords" content="eva ხალიჩები, ევა კოვრიკები, მანქანის ხალიჩები, ავტო აქსესუარები, საბარგულის ხალიჩა, moarge">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="მოარგე - Premium EVA საავტომობილო ხალიჩები">
+    <meta property="og:description" content="ეკოლოგიურად უსაფრთხო მასალა, იდეალური თავსებადობა და ინდივიდუალური დიზაინი 30-40 წუთში.">
+    <meta property="og:image" content="logo.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         :root {
@@ -25,6 +38,7 @@
             font-family: 'Noto Sans Georgian', sans-serif;
             background: var(--white);
             color: var(--black);
+            overflow-x: hidden;
         }
 
         /* NAVBAR */
@@ -53,6 +67,7 @@
 
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 30px;
             list-style: none;
         }
@@ -82,10 +97,25 @@
             color: var(--white) !important;
         }
 
+        .burger-menu {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .burger-menu div {
+            width: 28px;
+            height: 3px;
+            background-color: var(--white);
+            transition: all 0.3s ease;
+        }
+
         /* HERO */
         .hero {
             background: linear-gradient(135deg, var(--black) 0%, #0D1B4B 50%, var(--dark-blue) 100%);
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -119,10 +149,10 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-size: clamp(2.2rem, 5vw, 4.5rem);
             font-weight: 900;
             color: var(--white);
-            line-height: 1.1;
+            line-height: 1.2;
             margin-bottom: 20px;
         }
 
@@ -185,39 +215,39 @@
         /* STATS */
         .stats {
             background: var(--yellow);
-            padding: 50px 40px;
+            padding: 40px 20px;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
 
         .stat-item h3 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 900;
             color: var(--black);
         }
 
         .stat-item p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--black);
             font-weight: 600;
             opacity: 0.8;
         }
 
-        /* SECTIONS */
+        /* SECTIONS GENERAL */
         section {
-            padding: 80px 40px;
+            padding: 80px 20px;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .section-title h2 {
@@ -246,6 +276,60 @@
             border-radius: 2px;
         }
 
+        /* CATALOG */
+        .catalog {
+            background: var(--white);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .catalog-item {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease;
+        }
+
+        .catalog-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .catalog-img-wrapper {
+            width: 100%;
+            height: 240px;
+            background: #e2e8f0;
+            position: relative;
+        }
+
+        .catalog-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .catalog-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .catalog-info h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .catalog-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
         /* ABOUT */
         .about {
             background: var(--light-blue);
@@ -254,7 +338,7 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             max-width: 1100px;
             margin: 0 auto;
             align-items: center;
@@ -290,7 +374,7 @@
         }
 
         .feature-item .icon {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 8px;
         }
 
@@ -307,16 +391,12 @@
         }
 
         .about-logo img {
-            max-width: 400px;
+            max-width: 350px;
             width: 100%;
-            filter: drop-shadow(0 20px 40px rgba(65,105,200,0.3));
+            filter: drop-shadow(0 20px 40px rgba(65,105,200,0.2));
         }
 
         /* PROCESS */
-        .process {
-            background: var(--white);
-        }
-
         .process-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -331,7 +411,6 @@
             padding: 35px 25px;
             text-align: center;
             position: relative;
-            overflow: hidden;
             transition: transform 0.3s;
         }
 
@@ -403,13 +482,14 @@
         }
 
         .why-card:hover {
-            background: rgba(245,216,0,0.1);
+            background: rgba(245, 216, 0, 0.15);
             border-color: var(--yellow);
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(245, 216, 0, 0.1);
         }
 
         .why-icon {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             margin-bottom: 15px;
         }
 
@@ -426,15 +506,74 @@
             line-height: 1.6;
         }
 
-        /* CONTACT */
-        .contact {
+        /* REVIEWS */
+        .reviews {
             background: var(--light-blue);
         }
 
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            position: relative;
+        }
+
+        .stars {
+            color: #FFC107;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-size: 0.98rem;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reviewer-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .reviewer-details h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .reviewer-details p {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* CONTACT */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -482,7 +621,6 @@
             font-size: 1rem;
         }
 
-        /* MAP */
         .map-container {
             border-radius: 16px;
             overflow: hidden;
@@ -499,7 +637,7 @@
         /* SOCIAL */
         .social-section {
             background: var(--blue);
-            padding: 60px 40px;
+            padding: 60px 20px;
             text-align: center;
         }
 
@@ -513,7 +651,7 @@
         .social-section p {
             color: rgba(255,255,255,0.8);
             margin-bottom: 35px;
-            font-size: 1.1rem;
+            font-size: 1.1 immigrant;
         }
 
         .social-links {
@@ -545,7 +683,6 @@
         .social-tt { background: #000000; color: white; }
         .social-wa { background: #25D366; color: white; }
 
-        /* FOOTER */
         footer {
             background: var(--black);
             color: rgba(255,255,255,0.6);
@@ -558,7 +695,7 @@
             color: var(--yellow);
         }
 
-        /* MESSENGER CHAT */
+        /* MESSENGER WIDGET */
         .chat-widget {
             position: fixed;
             bottom: 30px;
@@ -611,7 +748,6 @@
             opacity: 1;
         }
 
-        /* PULSE ANIMATION */
         .pulse {
             position: absolute;
             width: 65px;
@@ -626,15 +762,34 @@
             100% { transform: scale(1.8); opacity: 0; }
         }
 
-        /* MOBILE */
         @media (max-width: 768px) {
-            nav { padding: 12px 20px; }
-            .nav-links { display: none; }
-            section { padding: 60px 20px; }
-            .about-grid { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.2rem; }
-            .stats { padding: 40px 20px; }
+            nav { padding: 15px 20px; }
+            .burger-menu { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 85px;
+                right: -100%;
+                width: 75%;
+                height: calc(100vh - 85px);
+                background: var(--black);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 50px;
+                gap: 30px;
+                transition: right 0.4s ease;
+                box-shadow: -10px 0 20px rgba(0,0,0,0.2);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { width: 100%; text-align: center; }
+            .nav-links a { font-size: 18px; display: block; padding: 10px; }
+            .nav-cta { display: inline-block; width: auto; margin: 0 auto; }
+            .burger-menu.toggle .line1 { transform: rotate(-45deg) translate(-6px, 6px); }
+            .burger-menu.toggle .line2 { opacity: 0; }
+            .burger-menu.toggle .line3 { transform: rotate(45deg) translate(-6px, -6px); }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-logo { order: 2; }
+            .hero h1 { font-size: 2.1rem; }
+            .hero p { font-size: 1.05rem; }
         }
     </style>
 </head>
@@ -645,24 +800,31 @@
     <div class="nav-logo">
         <img src="logo.png" alt="მოარგე">
     </div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
         <li><a href="#about">ჩვენ შესახებ</a></li>
+        <li><a href="#catalog">კატალოგი</a></li>
         <li><a href="#process">პროცესი</a></li>
         <li><a href="#why">უპირატესობები</a></li>
+        <li><a href="#reviews">შეფასებები</a></li>
         <li><a href="#contact">კონტაქტი</a></li>
         <li><a href="https://m.me/moargeauto" target="_blank" class="nav-cta">შეკვეთა</a></li>
     </ul>
+    <div class="burger-menu" id="burgerBtn">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
     <div style="position:relative; z-index:1;">
-        <div class="hero-badge">🏆 საქართველოს #1 EVA ხალიჩები</div>
+        <div class="hero-badge">🏆 საქართველოს #1 ინდივიდუალური ხალიჩები</div>
         <h1>შენი მანქანისთვის<br><span>მორგებული ხალიჩა</span><br>30-40 წუთში</h1>
-        <p>EVA მასალისგან დამზადებული ხალიჩები — 100% სიზუსტე, 2 წლიანი გარანტია, სწრაფი მომსახურება.</p>
+        <p>პრემიუმ ხარისხის, ეკოლოგიურად სუფთა EVA ხალიჩები — 100% სიზუსტე, 2 წლიანი ქარხნული გარანტია და სწრაფი მიწოდება მთელ საქართველოში.</p>
         <div class="hero-buttons">
             <a href="https://m.me/moargeauto" target="_blank" class="btn-primary">💬 შეკვეთა Messenger-ით</a>
-            <a href="#about" class="btn-secondary">გაიგე მეტი</a>
+            <a href="#catalog" class="btn-secondary">ნახე კატალოგი</a>
         </div>
     </div>
 </section>
@@ -676,15 +838,15 @@
         </div>
         <div class="stat-item">
             <h3>2 წ.</h3>
-            <p>გარანტია</p>
+            <p>ქარხნული გარანტია</p>
         </div>
         <div class="stat-item">
             <h3>100%</h3>
-            <p>სიზუსტე</p>
+            <p>მილიმეტრული სიზუსტე</p>
         </div>
         <div class="stat-item">
             <h3>EVA</h3>
-            <p>პრემიუმ მასალა</p>
+            <p>ეკო-უსაფრთხო მასალა</p>
         </div>
     </div>
 </div>
@@ -697,25 +859,68 @@
         </div>
         <div class="about-text">
             <h3>ვინ ვართ ჩვენ?</h3>
-            <p>„მოარგე" არის ქართული კომპანია, რომელიც სპეციალიზირებულია EVA მასალისგან ავტომობილის ხალიჩების წარმოებაში.</p>
-            <p>ჩვენ ვქმნით ხალიჩებს, რომლებიც ზუსტად ერგება თქვენი ავტომობილის კონფიგურაციას — არა სტანდარტული, არამედ სრულად <strong>თქვენზე მორგებული.</strong></p>
+            <p>„მოარგე" არის ინოვაციური ქართული კომპანია, რომელიც უკვე თითქმის ერთი წელია ოპერირებს ადგილობრივ ბაზარზე და სპეციალიზებულია უმაღლესი ხარისხის საავტომობილო ხალიჩების წარმოებაში.</p>
+            <p>ჩვენი მთავარი მიზანია ავტომობილის ინტერიერის დახვეწა და მისი მორგება მფლობელის ინდივიდუალურ საჭიროებებზე. ვინაიდან მძღოლები მანქანაში დიდ დროს ატარებენ, უმნიშვნელოვანესია, რომ გარემო იყოს მაქსიმალურად კომფორტული და პერსონალიზებული.</p>
+            <p>მოდელირება ხდება უშუალოდ თქვენთან შეთანხმებით: თავად ირჩევთ ძირითად ფერს, კანტს, ლოგოსა და საქუსლეს, რაც ხალიჩას სრულყოფილ იერსახეს სძენს.</p>
             <div class="about-features">
                 <div class="feature-item">
                     <div class="icon">🎯</div>
-                    <h4>ზუსტი ზომები</h4>
+                    <h4>ზუსტი თავსებადობა</h4>
+                    <p style="font-size: 12px; color: #666; margin-top: 4px;">თავსდება ქარხნული სამაგრებით</p>
                 </div>
                 <div class="feature-item">
                     <div class="icon">⚡</div>
-                    <h4>სწრაფი შესრულება</h4>
+                    <h4>ექსპრეს წარმოება</h4>
+                    <p style="font-size: 12px; color: #666; margin-top: 4px;">დამზადება 30-40 წუთში</p>
                 </div>
                 <div class="feature-item">
                     <div class="icon">🛡️</div>
-                    <h4>2 წლიანი გარანტია</h4>
+                    <h4>ქარხნული გარანტია</h4>
+                    <p style="font-size: 12px; color: #666; margin-top: 4px;">2 წლიანი სრული გარანტია</p>
                 </div>
                 <div class="feature-item">
-                    <div class="icon">✨</div>
-                    <h4>პრემიუმ ხარისხი</h4>
+                    <div class="icon">🌿</div>
+                    <h4>100% ეკო-სუფთა</h4>
+                    <p style="font-size: 12px; color: #666; margin-top: 4px;">უსაფრთხოა ჯანმრთელობისთვის</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CATALOG -->
+<section class="catalog" id="catalog">
+    <div class="section-title">
+        <h2>ჩვენი <span>კატალოგი</span></h2>
+        <div class="title-line"></div>
+        <p>შეარჩიეთ თქვენთვის სასურველი ფერების კომბინაცია და დიზაინი</p>
+    </div>
+    <div class="catalog-grid">
+        <div class="catalog-item">
+            <div class="catalog-img-wrapper">
+                <img src="eva1.jpg" alt="EVA ხალიჩა შავი წითელი კანტით">
+            </div>
+            <div class="catalog-info">
+                <h3>შავი ხალიჩა წითელი კანტით</h3>
+                <p>კონტრასტული და სპორტული იერი თქვენი სალონისთვის</p>
+            </div>
+        </div>
+        <div class="catalog-item">
+            <div class="catalog-img-wrapper">
+                <img src="eva2.jpg" alt="EVA საბარგულის ხალიჩა">
+            </div>
+            <div class="catalog-info">
+                <h3>საბარგულის ხალიჩა</h3>
+                <p>მაქსიმალური დაცვა ჭუჭყისა და სითხეებისგან საბარგულში</p>
+            </div>
+        </div>
+        <div class="catalog-item">
+            <div class="catalog-img-wrapper">
+                <img src="eva3.jpg" alt="EVA ხალიჩა წითელი შავი კანტით">
+            </div>
+            <div class="catalog-info">
+                <h3>წითელი ხალიჩა შავი კანტით</h3>
+                <p>ექსკლუზიური და თამამი დიზაინი გამორჩეული ინტერიერისთვის</p>
             </div>
         </div>
     </div>
@@ -731,23 +936,23 @@
     <div class="process-grid">
         <div class="process-card">
             <div class="process-number">1</div>
-            <h3>დაგვიკავშირდი</h3>
-            <p>გამოგვიგზავნე შეტყობინება Messenger-ში ან დაგვირეკე</p>
+            <h3>დაგვიკავშირდით</h3>
+            <p>მოგვწერეთ Messenger-ში, WhatsApp-ში ან დაგვირეკეთ ნომერზე</p>
         </div>
         <div class="process-card">
             <div class="process-number">2</div>
-            <h3>მანქანის მონაცემები</h3>
-            <p>გვეტყვი შენი მანქანის მარკა, მოდელი და წელი</p>
+            <h3>მონაცემების დაზუსტება</h3>
+            <p>გვეუბნებით თქვენი ავტომობილის მარკას, მოდელსა და გამოშვების წელს</p>
         </div>
         <div class="process-card">
             <div class="process-number">3</div>
-            <h3>წარმოება</h3>
-            <p>30-40 წუთში ვამზადებთ შენზე მორგებულ ხალიჩებს</p>
+            <h3>სწრაფი წარმოება</h3>
+            <p>სულ რაღაც 30-40 წუთში ვამზადებთ თქვენზე მორგებულ კომპლექტს</p>
         </div>
         <div class="process-card">
             <div class="process-number">4</div>
-            <h3>მიღება</h3>
-            <p>ჩამოდი და ჩადე! სრულყოფილი შედეგი გარანტირებულია</p>
+            <h3>მიწოდება / მიღება</h3>
+            <p>შეგიძლიათ გაიტანოთ ადგილზე ან ისარგებლოთ სწრაფი მიწოდებით მთელ საქართველოში</p>
         </div>
     </div>
 </section>
@@ -755,39 +960,83 @@
 <!-- WHY US -->
 <section class="why-us" id="why">
     <div class="section-title">
-        <h2>რატომ <span style="color:var(--yellow)">მოარგე</span>?</h2>
+        <h2>რატომ ტექნოლოგია <span style="color:var(--yellow)">მოარგე</span>?</h2>
         <div class="title-line"></div>
     </div>
     <div class="why-grid">
         <div class="why-card">
-            <div class="why-icon">⚡</div>
-            <h3>სუპერ სწრაფი</h3>
-            <p>30-40 წუთში მზა ხალიჩა — შენი დრო ძვირფასია</p>
-        </div>
-        <div class="why-card">
-            <div class="why-icon">🎯</div>
-            <h3>100% სიზუსტე</h3>
-            <p>ზუსტად შენი მანქანისთვის — მილიმეტრული სიზუსტე</p>
-        </div>
-        <div class="why-card">
             <div class="why-icon">🛡️</div>
-            <h3>2 წლიანი გარანტია</h3>
-            <p>სრული გარანტია ხარისხზე — ყოველგვარი პირობის გარეშე</p>
+            <h3>ქარხნული ფიქსაცია</h3>
+            <p>ხალიჩები მაგრდება ორიგინალი ქარხნული სამაგრებით, რაც გამორიცხავს მათ ცურვას და უზრუნველყოფს სიმყარეს.</p>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">🦶</div>
+            <h3>დამატებითი საქუსლე</h3>
+            <p>მძღოლის მხარეს დამონტაჟებული სპეციალური საქუსლე იცავს ხალიჩას ცვეთისგან და უნარჩუნებს პირვანდელ სახეს წლების მანძილზე.</p>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">🧽</div>
+            <h3>უჯრედოვანი სტრუქტურა</h3>
+            <p>სალონში არსებული ნებისმიერი ჭუჭყი, მტვერი და წყალი გროვდება ფორებში, რაც უზრუნველყოფს სალონის სისუფთავეს ხანგრძლივი დროით.</p>
         </div>
         <div class="why-card">
             <div class="why-icon">💧</div>
-            <h3>წყალგამძლე</h3>
-            <p>EVA მასალა — ადვილად სარეცხი, გამძლე და ხანგრძლივი</p>
+            <h3>მარტივად რეცხვადი</h3>
+            <p>ჩვენი ხალიჩები საერთოდ არ იწოვს სითხეს, რის გამოც იდეალურად და სწრაფად ირეცხება და შრება უმოკლეს დროში.</p>
         </div>
         <div class="why-card">
-            <div class="why-icon">🇬🇪</div>
-            <h3>ქართული ხარისხი</h3>
-            <p>ადგილობრივი წარმოება — სწრაფი მომსახურება</p>
+            <div class="why-icon">🌿</div>
+            <h3>ჯანმრთელობისთვის უსაფრთხო</h3>
+            <p>გამოყენებული პრემიუმ EVA მასალა არის სრულიად უსუნო, ეკოლოგიურად სუფთა და არ შეიცავს მავნე ნივთიერებებს.</p>
         </div>
         <div class="why-card">
-            <div class="why-icon">💰</div>
-            <h3>საუკეთესო ფასი</h3>
-            <p>პრემიუმ ხარისხი ხელმისაწვდომ ფასად</p>
+            <div class="why-icon">📦</div>
+            <h3>რეგიონული მიწოდება</h3>
+            <p>არ აქვს მნიშვნელობა სად იმყოფებით, ჩვენი გუნდი უზრუნველყოფს შეკვეთის უსაფრთხო ტრანსპორტირებას ქვეყნის ნებისმიერ წერტილში.</p>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+    <div class="section-title">
+        <h2>რას ამბობენ <span>მძღოლები</span>?</h2>
+        <div class="title-line"></div>
+        <p>ჩვენი კმაყოფილი მომხმარებლების რეალური გამოხმაურებები</p>
+    </div>
+    <div class="reviews-grid">
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"ძალიან კმაყოფილი ვარ. ზუსტად 35 წუთში დამიმზადეს, მანქანაში იდეალურად ჩაჯდა, ფეხი საერთოდ არ სრიალებს და მტვერს საერთოდ არ აჩენს."</p>
+            <div class="reviewer-info">
+                <div class="reviewer-avatar">გ</div>
+                <div class="reviewer-details">
+                    <h4>გიორგი ბ.</h4>
+                    <p>Toyota Prius-ის მფლობელი</p>
+                </div>
+            </div>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"ხარისხი არის უმაღლესი, წყალი და ტალახი ერთ ადგილას გროვდება ფორებში და მანქანა სულ სუფთაა. ყველას ვურჩევ მოარგეს!"</p>
+            <div class="reviewer-info">
+                <div class="reviewer-avatar">ლ</div>
+                <div class="reviewer-details">
+                    <h4>ლაშა ტ.</h4>
+                    <p>BMW E60-ის მფლობელი</p>
+                </div>
+            </div>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"საუკეთესო სერვისი აქვთ, სწრაფი მორგება და 2 წლიანი გარანტია ნამდვილად დიდი პლუსია. ფასიც ძალიან მისაღებია ხარისხთან შედარებით."</p>
+            <div class="reviewer-info">
+                <div class="reviewer-avatar">ნ</div>
+                <div class="reviewer-details">
+                    <h4>ნიკა მ.</h4>
+                    <p>Mercedes-Benz C-Class</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -795,36 +1044,55 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
     <div class="section-title">
-        <h2>დაგვი<span>კავშირდი</span></h2>
+        <h2>დაგვი<span>კავშირდით</span></h2>
         <div class="title-line"></div>
-        <p>მზად ვართ გიპასუხოთ ნებისმიერ კითხვაზე!</p>
+        <p>მზად ვართ ვუპასუხოთ თქვენს ნებისმიერ კითხვას!</p>
     </div>
     <div class="contact-grid">
         <div class="contact-info">
-            <h3>საკონტაქტო ინფო</h3>
+        <div class="contact-info">
+            <h3>საკონტაქტო ინფორმაცია</h3>
+            
             <a href="tel:+995599979565" class="contact-item">
-                <div class="contact-icon">📞</div>
+                <div class="contact-icon">
+                    <!-- ტელეფონის SVG იკონა -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
                 <span>+995 599 979 565</span>
             </a>
+            
             <a href="https://wa.me/995599979565" target="_blank" class="contact-item">
-                <div class="contact-icon">💬</div>
+                <div class="contact-icon">
+                    <!-- WhatsApp-ის დახვეწილი SVG იკონა -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#1A1A1A"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.338 5.393 0 11.95 0c3.178.001 6.165 1.24 8.407 3.485 2.242 2.246 3.479 5.232 3.476 8.411-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448L.057 24zm6.59-4.846c1.64.974 3.245 1.486 4.975 1.487 5.386 0 9.771-4.386 9.774-9.774.002-2.61-1.012-5.064-2.857-6.91-1.846-1.847-4.3-2.86-6.914-2.86-5.389 0-9.774 4.385-9.777 9.773-.001 1.83.493 3.44 1.43 5.011l-.995 3.634 3.737-.981zm10.825-7.404c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289-.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                </div>
                 <span>WhatsApp: 599 979 565</span>
             </a>
+            
             <a href="https://m.me/moargeauto" target="_blank" class="contact-item">
-                <div class="contact-icon">💙</div>
+                <div class="contact-icon">
+                    <!-- Messenger-ის SVG იკონა -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#1A1A1A"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/></svg>
+                </div>
                 <span>Facebook Messenger</span>
             </a>
-            <a href="https://maps.app.goo.gl/doPH6VUaLpYVzuS67" target="_blank" class="contact-item">
-                <div class="contact-icon">📍</div>
+            
+            <a href="https://maps.app.goo.gl/musENBTpC7aHvYNC6" target="_blank" class="contact-item">
+                <div class="contact-icon">
+                    <!-- ლოკაციის (პინის) SVG იკონა -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
                 <span>ჩვენი მდებარეობა</span>
             </a>
         </div>
         <div>
             <div class="map-container">
+                <!-- აბსოლუტურად სწორი და სამუშაო ჩაშენების ლინკი თქვენი კოორდინატებით -->
                 <iframe
-                    src="https://maps.google.com/maps?q=41.6938,44.8015&z=15&output=embed"
-                    allowfullscreen
-                    loading="lazy">
+                    src="https://maps.google.com/maps?q=41.783604,44.766234&z=16&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="strict-origin-when-cross-origin">
                 </iframe>
             </div>
         </div>
@@ -833,8 +1101,8 @@
 
 <!-- SOCIAL -->
 <div class="social-section">
-    <h2>გამოგვყევი სოციალურ ქსელებში</h2>
-    <p>ახალი სამუშაოები, აქციები და სიახლეები ყოველდღე!</p>
+    <h2>გამოგვყევით სოციალურ ქსელებში</h2>
+    <p>ნახეთ ჩვენი ნამუშევრები, მიმდინარე აქციები და სიახლეები ყოველდღე!</p>
     <div class="social-links">
         <a href="https://www.facebook.com/moargeauto" target="_blank" class="social-link social-fb">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -857,13 +1125,13 @@
 
 <!-- FOOTER -->
 <footer>
-    <p>© 2024 <span>მოარგე</span> — ყველა უფლება დაცულია | EVA საავტომობილო ხალიჩები</p>
+    <p>© 2026 <span>მოარგე</span> — ყველა უფლება დაცულია | პრემიუმ საავტომობილო ხალიჩები</p>
 </footer>
 
 <!-- MESSENGER CHAT WIDGET -->
 <div class="chat-widget">
     <div class="pulse"></div>
-    <div class="chat-tooltip">დაგვიკავშირდი Messenger-ში!</div>
+    <div class="chat-tooltip">დაგვიკავშირდით Messenger-ში!</div>
     <a href="https://m.me/moargeauto" target="_blank">
         <button class="chat-button">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -872,6 +1140,30 @@
         </button>
     </a>
 </div>
+
+<script>
+    // მობილური მენიუს ლოგიკა
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    const links = document.querySelectorAll('.nav-links li a');
+
+    burgerBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        burgerBtn.classList.toggle('toggle');
+    });
+
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            burgerBtn.classList.remove('toggle');
+        });
+    });
+
+    // ჩატის თულთიპის გამოჩენა
+    const chatTooltip = document.querySelector('.chat-tooltip');
+    setTimeout(() => { chatTooltip.style.opacity = '1'; }, 3000);
+    setTimeout(() => { chatTooltip.style.opacity = '0'; }, 8000);
+</script>
 
 </body>
 </html>
