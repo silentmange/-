@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>მოარგე - EVA საავტომობილო ხალიჩები</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --yellow: #F5D800;
+            --blue: #4169C8;
+            --dark-blue: #1E3A8A;
+            --black: #1A1A1A;
+            --white: #FFFFFF;
+            --light-blue: #EEF2FF;
+        }
+
+        body {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* NAVBAR */
+        nav {
+            background: var(--black);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(65,105,200,0.3);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo img {
+            height: 55px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--yellow);
+        }
+
+        .nav-cta {
+            background: var(--yellow);
+            color: var(--black) !important;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 700 !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--blue) !important;
+            color: var(--white) !important;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--black) 0%, #0D1B4B 50%, var(--dark-blue) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(65,105,200,0.15) 0%, transparent 70%);
+        }
+
+        .hero-badge {
+            background: var(--yellow);
+            color: var(--black);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--yellow);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--yellow);
+            color: var(--black);
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(245,216,0,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid var(--blue);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--blue);
+            transform: translateY(-3px);
+        }
+
+        /* STATS */
+        .stats {
+            background: var(--yellow);
+            padding: 50px 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--black);
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            color: var(--black);
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--black);
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 span {
+            color: var(--blue);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .title-line {
+            width: 60px;
+            height: 4px;
+            background: var(--yellow);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ABOUT */
+        .about {
+            background: var(--light-blue);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--yellow);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .feature-item .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-item h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .about-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-logo img {
+            max-width: 400px;
+            width: 100%;
+            filter: drop-shadow(0 20px 40px rgba(65,105,200,0.3));
+        }
+
+        /* PROCESS */
+        .process {
+            background: var(--white);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .process-card {
+            background: var(--black);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--yellow);
+        }
+
+        .process-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .process-number {
+            width: 55px;
+            height: 55px;
+            background: var(--yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--black);
+            margin: 0 auto 20px;
+        }
+
+        .process-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .process-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* WHY US */
+        .why-us {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .why-us .section-title h2 {
+            color: var(--white);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: rgba(65,105,200,0.15);
+            border: 1px solid rgba(65,105,200,0.3);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .why-card:hover {
+            background: rgba(245,216,0,0.1);
+            border-color: var(--yellow);
+            transform: translateY(-5px);
+        }
+
+        .why-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--yellow);
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: var(--light-blue);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 18px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: var(--black);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            border-left: 4px solid var(--yellow);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--yellow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* MAP */
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            height: 350px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* SOCIAL */
+        .social-section {
+            background: var(--blue);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .social-section h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .social-section p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 35px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .social-fb { background: #1877F2; color: white; }
+        .social-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+        .social-tt { background: #000000; color: white; }
+        .social-wa { background: #25D366; color: white; }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--yellow);
+        }
+
+        /* MESSENGER CHAT */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+        }
+
+        .chat-button {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #0084FF, #0066CC);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(0,132,255,0.5);
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(0,132,255,0.7);
+        }
+
+        .chat-button svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        .chat-tooltip {
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            background: var(--black);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .chat-widget:hover .chat-tooltip {
+            opacity: 1;
+        }
+
+        /* PULSE ANIMATION */
+        .pulse {
+            position: absolute;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: rgba(0,132,255,0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav { padding: 12px 20px; }
+            .nav-links { display: none; }
+            section { padding: 60px 20px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+            .stats { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="nav-logo">
+        <img src="logo.png" alt="მოარგე">
+    </div>
+    <ul class="nav-links">
+        <li><a href="#about">ჩვენ შესახებ</a></li>
+        <li><a href="#process">პროცესი</a></li>
+        <li><a href="#why">უპირატესობები</a></li>
+        <li><a href="#contact">კონტაქტი</a></li>
+        <li><a href="https://m.me/moargeauto" target="_blank" class="nav-cta">შეკვეთა</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div style="position:relative; z-index:1;">
+        <div class="hero-badge">🏆 საქართველოს #1 EVA ხალიჩები</div>
+        <h1>შენი მანქანისთვის<br><span>მორგებული ხალიჩა</span><br>30-40 წუთში</h1>
+        <p>EVA მასალისგან დამზადებული ხალიჩები — 100% სიზუსტე, 2 წლიანი გარანტია, სწრაფი მომსახურება.</p>
+        <div class="hero-buttons">
+            <a href="https://m.me/moargeauto" target="_blank" class="btn-primary">💬 შეკვეთა Messenger-ით</a>
+            <a href="#about" class="btn-secondary">გაიგე მეტი</a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <h3>30-40'</h3>
+            <p>წუთი დამზადება</p>
+        </div>
+        <div class="stat-item">
+            <h3>2 წ.</h3>
+            <p>გარანტია</p>
+        </div>
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>სიზუსტე</p>
+        </div>
+        <div class="stat-item">
+            <h3>EVA</h3>
+            <p>პრემიუმ მასალა</p>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="about-grid">
+        <div class="about-logo">
+            <img src="logo.png" alt="მოარგე ლოგო">
+        </div>
+        <div class="about-text">
+            <h3>ვინ ვართ ჩვენ?</h3>
+            <p>„მოარგე" არის ქართული კომპანია, რომელიც სპეციალიზირებულია EVA მასალისგან ავტომობილის ხალიჩების წარმოებაში.</p>
+            <p>ჩვენ ვქმნით ხალიჩებს, რომლებიც ზუსტად ერგება თქვენი ავტომობილის კონფიგურაციას — არა სტანდარტული, არამედ სრულად <strong>თქვენზე მორგებული.</strong></p>
+            <div class="about-features">
+                <div class="feature-item">
+                    <div class="icon">🎯</div>
+                    <h4>ზუსტი ზომები</h4>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">⚡</div>
+                    <h4>სწრაფი შესრულება</h4>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🛡️</div>
+                    <h4>2 წლიანი გარანტია</h4>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">✨</div>
+                    <h4>პრემიუმ ხარისხი</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+    <div class="section-title">
+        <h2>როგორ <span>მუშაობს</span>?</h2>
+        <div class="title-line"></div>
+        <p>მარტივი 4 ნაბიჯი — შენი ხალიჩა მზადაა!</p>
+    </div>
+    <div class="process-grid">
+        <div class="process-card">
+            <div class="process-number">1</div>
+            <h3>დაგვიკავშირდი</h3>
+            <p>გამოგვიგზავნე შეტყობინება Messenger-ში ან დაგვირეკე</p>
+        </div>
+        <div class="process-card">
+            <div class="process-number">2</div>
+            <h3>მანქანის მონაცემები</h3>
+            <p>გვეტყვი შენი მანქანის მარკა, მოდელი და წელი</p>
+        </div>
+        <div class="process-card">
+            <div class="process-number">3</div>
+            <h3>წარმოება</h3>
+            <p>30-40 წუთში ვამზადებთ შენზე მორგებულ ხალიჩებს</p>
+        </div>
+        <div class="process-card">
+            <div class="process-number">4</div>
+            <h3>მიღება</h3>
+            <p>ჩამოდი და ჩადე! სრულყოფილი შედეგი გარანტირებულია</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why">
+    <div class="section-title">
+        <h2>რატომ <span style="color:var(--yellow)">მოარგე</span>?</h2>
+        <div class="title-line"></div>
+    </div>
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="why-icon">⚡</div>
+            <h3>სუპერ სწრაფი</h3>
+            <p>30-40 წუთში მზა ხალიჩა — შენი დრო ძვირფასია</p>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">🎯</div>
+            <h3>100% სიზუსტე</h3>
+            <p>ზუსტად შენი მანქანისთვის — მილიმეტრული სიზუსტე</p>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">🛡️</div>
+            <h3>2 წლიანი გარანტია</h3>
+            <p>სრული გარანტია ხარისხზე — ყოველგვარი პირობის გარეშე</p>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">💧</div>
+            <h3>წყალგამძლე</h3>
+            <p>EVA მასალა — ადვილად სარეცხი, გამძლე და ხანგრძლივი</p>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">🇬🇪</div>
+            <h3>ქართული ხარისხი</h3>
+            <p>ადგილობრივი წარმოება — სწრაფი მომსახურება</p>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">💰</div>
+            <h3>საუკეთესო ფასი</h3>
+            <p>პრემიუმ ხარისხი ხელმისაწვდომ ფასად</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="section-title">
+        <h2>დაგვი<span>კავშირდი</span></h2>
+        <div class="title-line"></div>
+        <p>მზად ვართ გიპასუხოთ ნებისმიერ კითხვაზე!</p>
+    </div>
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h3>საკონტაქტო ინფო</h3>
+            <a href="tel:+995599979565" class="contact-item">
+                <div class="contact-icon">📞</div>
+                <span>+995 599 979 565</span>
+            </a>
+            <a href="https://wa.me/995599979565" target="_blank" class="contact-item">
+                <div class="contact-icon">💬</div>
+                <span>WhatsApp: 599 979 565</span>
+            </a>
+            <a href="https://m.me/moargeauto" target="_blank" class="contact-item">
+                <div class="contact-icon">💙</div>
+                <span>Facebook Messenger</span>
+            </a>
+            <a href="https://maps.app.goo.gl/doPH6VUaLpYVzuS67" target="_blank" class="contact-item">
+                <div class="contact-icon">📍</div>
+                <span>ჩვენი მდებარეობა</span>
+            </a>
+        </div>
+        <div>
+            <div class="map-container">
+                <iframe
+                    src="https://maps.google.com/maps?q=41.6938,44.8015&z=15&output=embed"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOCIAL -->
+<div class="social-section">
+    <h2>გამოგვყევი სოციალურ ქსელებში</h2>
+    <p>ახალი სამუშაოები, აქციები და სიახლეები ყოველდღე!</p>
+    <div class="social-links">
+        <a href="https://www.facebook.com/moargeauto" target="_blank" class="social-link social-fb">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+        </a>
+        <a href="https://www.instagram.com/moargemoarge/" target="_blank" class="social-link social-ig">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+        </a>
+        <a href="https://www.tiktok.com/@moargemoarge" target="_blank" class="social-link social-tt">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.53V6.75a4.85 4.85 0 01-1.02-.06z"/></svg>
+            TikTok
+        </a>
+        <a href="https://wa.me/995599979565" target="_blank" class="social-link social-wa">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+        </a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2024 <span>მოარგე</span> — ყველა უფლება დაცულია | EVA საავტომობილო ხალიჩები</p>
+</footer>
+
+<!-- MESSENGER CHAT WIDGET -->
+<div class="chat-widget">
+    <div class="pulse"></div>
+    <div class="chat-tooltip">დაგვიკავშირდი Messenger-ში!</div>
+    <a href="https://m.me/moargeauto" target="_blank">
+        <button class="chat-button">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/>
+            </svg>
+        </button>
+    </a>
+</div>
+
+</body>
+</html>
